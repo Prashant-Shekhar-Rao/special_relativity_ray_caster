@@ -1,6 +1,7 @@
 use std::fs;
 
 pub fn read_lines()->(f64,[f64;3],f64,[f64;2],[f64;3],String,[f64;3],f64,f64,[f64;3],f64,f64){
+    //This code has pointless repetition. This code needs to be changed
     let mut result = "".to_string();
     let data=";Delete this file to reset to default settings. A new file would be created upon deletion.
 ;Add the location of file according to where special_relativity.exe if the file.obj is storedin same folder as object then just the name is enough.
