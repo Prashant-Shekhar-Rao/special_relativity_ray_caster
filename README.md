@@ -10,7 +10,7 @@ These are examples of terrell rotation
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688982444.png)
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688987724.png)
 ## terrell rotation
-The orignal terrell rotation paper assumes a small solid angle and rays striking at screen perpendicularly. The default ini file does not have a small solid angle because trying to find position of the object such that it is visble becomes tedious.
+The original Terrell rotation paper assumes a small solid angle and rays striking the screen perpendicularly. The default ini file does not have a small solid angle because trying to find the position of the object such that it is visible on screen becomes tedious.
 This is a modified ini file which makes sure solid angle is small
 
 
