@@ -12,8 +12,9 @@ These are examples of terrell rotation
 # # terrell rotation
 The orignal terrell rotation paper assumes a small solid angle and rays striking at screen perpendicularly. The default ini file does not have a small solid angle because trying to find the object becomes tedious.
 This is a modified ini file which makes sure solid angle is small
-<sub>
-file_location=13902_Earth_v1_l3.obj
+
+
+__file_location=13902_Earth_v1_l3.obj
 
 position_of_eye= 0.0 , 0.0 , 24
 
@@ -35,7 +36,9 @@ velocity_direction= -1.0 , 0, 0
 
 velocity_magnitude_as_percentage=40
 
-speed of light=1</sub>
+speed of light=1__
+
+
 In this case sphere appears spherical despite moving at 40% speed of light
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688994496.png)
 
