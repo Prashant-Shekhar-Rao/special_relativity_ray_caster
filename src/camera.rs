@@ -208,7 +208,7 @@ struct Ray {direction_t: f64,
     direction_z: f64,
  
 }
-
+//This function primarly exists to check for what values floating point error come in and to check if lorentz_transformation_matrix is correct
 fn lorentz_transformation_on_moving_object(old_Position:[f64;3],lorentz_transformation_matrix: &[[f64; 4]; 4],vx:f64,vy:f64,vz:f64,c:f64)->[f64;4]{
      
 let Lorentz_factor=lorentz_transformation_matrix[0][0];
