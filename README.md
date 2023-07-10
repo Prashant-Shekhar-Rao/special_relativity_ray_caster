@@ -43,5 +43,4 @@ speed of light=1
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688994496.png)
 This is a non moving sphere for comparison
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/non%20moving%20sphere.png)
-In default case with a large solid angle the sphere moving at 40% of speed of light would appear elipsoid as illustrated here
-![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688995921.png)
+In the default case, where a large solid angle is considered, a sphere moving at 40% of the speed of light would appear as an ellipsoid, as illustrated here.![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688995921.png)
