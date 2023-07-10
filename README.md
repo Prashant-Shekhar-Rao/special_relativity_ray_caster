@@ -39,7 +39,7 @@ velocity_magnitude_as_percentage=40
 speed of light=1
 
 
-In this case sphere appears spherical despite moving at 40% speed of light
+**In this case sphere's outline appears spherical despite moving at 40% speed of light**
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688994496.png)
 
 In default case with a large solid angle the sphere would appear elipsoid as illustrated here
