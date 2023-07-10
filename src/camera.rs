@@ -20,6 +20,8 @@ pub struct Eye {
 pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let mut ini=red::read_lines();
     let c =1f64;
+     //We do this division because directly changing c leads to loss of precision due to how floating point works.
+     //This is equivalent to taking one light second as unit of distance 
     let div_by_light_year=1f64/ini.11;
      ini.1=scale(ini.1,div_by_light_year);
      ini.2=ini.2*div_by_light_year;
