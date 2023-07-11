@@ -1,7 +1,6 @@
 use std::fs;
 
 pub fn read_lines()->(f64,[f64;3],f64,[f64;2],[f64;3],String,[f64;3],f64,f64,[f64;3],f64,f64){
-    //This code has pointless repetition. This code needs to be changed
     let mut result = "".to_string();
     let data=";Delete this file to reset to default settings. A new file would be created upon deletion.
 ;Add the location of file according to where special_relativity.exe if the file.obj is storedin same folder as object then just the name is enough.
@@ -14,7 +13,8 @@ Resolution= 1000x1000
 ;size as percentage of total size of model
 size= 100
 direction_where_eye_is_pointing= 0.0 , 0.0 ,-1.0
-distance_between_focus_and_eye= 2.0
+;This controls the viewing angle. Small height_of_camera and large distance leads to small viewing angle
+perpendicular_distance_between_viewing_plane_and_eye= 2.0
 ;position is from our perspective at t=0
 position_of_the_model= -1 , 0.0 , 2.0
 ;the time at which we would see the photo
@@ -201,7 +201,7 @@ stree.push(i);
     //
     }
 }
-let distance_between_focus_and_eye=function_extract_single_number(&result,"distancebetweenfocusandeye".to_string());
+let distance_between_focus_and_eye=function_extract_single_number(&result,"perpendiculardistancebetweenviewingplaneandeye".to_string());
 let time=function_extract_single_number(&result,"time".to_string());
 let velocity_magnitude_as_percentage=function_extract_single_number(&result,"velocitymagnitudeaspercentage".to_string());
 let height_of_camera=function_extract_single_number(&result,"heightofcamerasscreen".to_string());
