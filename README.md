@@ -12,8 +12,9 @@ These are examples of terrell rotation
 ## terrell rotation
 The original Terrell rotation paper assumes a small solid angle and rays striking the screen perpendicularly. The default ini file does not have a small solid angle because trying to find the position of the object such that it is visible on screen becomes tedious.
 This is a modified ini file which makes sure solid angle is small.
-The focus in this context means middle point of the viewing plane. Distance between focus and eye is the perpendicular distance of eye from the viewing plane
+The focus in this context means middle point of the viewing plane.
 
+Distance between focus and eye is the perpendicular distance of eye from the viewing plane
 
 file_location=13902_Earth_v1_l3.obj
 
