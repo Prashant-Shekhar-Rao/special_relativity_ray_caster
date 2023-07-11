@@ -14,8 +14,6 @@ The original Terrell rotation paper assumes a small solid angle and rays strikin
 This is a modified ini file which makes sure solid angle is small.
 The focus in this context means middle point of the viewing plane.
 
-Distance between focus and eye is the perpendicular distance of eye from the viewing plane
-
 file_location=13902_Earth_v1_l3.obj
 
 position_of_eye= 0.0 , 0.0 , 24
@@ -28,7 +26,7 @@ size= 100
 
 direction_where_eye_is_pointing= 0.0 , 0.0 ,-1.0
 
-distance_between_focus_and_eye= 20.0
+perpendicular_distance_between_viewing_plane_and_eye= 20.0
 
 position_of_the_model=-8, 0.0 , 2.0
 
@@ -39,7 +37,6 @@ velocity_direction= -1.0 , 0, 0
 velocity_magnitude_as_percentage=40
 
 speed of light=1
-
 
 **In this case sphere's outline appears spherical despite moving at 40% speed of light**
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688994496.png)
