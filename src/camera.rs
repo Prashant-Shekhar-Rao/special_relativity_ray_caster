@@ -6,7 +6,7 @@ use vecmath::vec3_normalized;
 use vecmath::vec3_scale as scale;
 use vecmath::vec3_sub;
 use crate::ini_reader as red;
-
+use std::fs;
 #[derive(Debug)]
 pub struct Eye {
      pub t: f64,
@@ -43,10 +43,10 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     {
         ini.7=99f64;
         }
-    let Velocitiy=vecmath::vec3_normalized(ini.4);
-    let mut vx =Velocitiy[0]*c*ini.7/100f64;
-    let mut vy = Velocitiy[1]*c*ini.7/100f64;
-    let mut vz = Velocitiy[2]*c*ini.7/100f64;
+    let velocitiy=vecmath::vec3_normalized(ini.4);
+    let mut vx =velocitiy[0]*c*ini.7/100f64;
+    let mut vy = velocitiy[1]*c*ini.7/100f64;
+    let mut vz = velocitiy[2]*c*ini.7/100f64;
     if vx.is_nan()||vy.is_nan()||vz.is_nan(){
         if ini.7!=0f64{
          println!("velocities in ini files are inncorrect. Maybe it is 0 0 0");}
@@ -54,34 +54,38 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
         vy=0f64;
         vz=0f64;
     }
-    let mut v_square = (vx * vx + vy * vy + vz * vz);
+    let mut v_square: f64 = vx * vx + vy * vy + vz * vz;
     if vx*vx+vy*vy+vz*vz<=000000000001f64*000000000001f64{v_square=0.000000000000000001f64;}
-    let Lorentz_factor = (1.0f64 / (1.0f64 - (v_square )/ (c * c))).sqrt();
+    let lorentz_factor = (1.0f64 / (1.0f64 - (v_square )/ (c * c))).sqrt();
     let lorentz_factor_divided_by_c=(1.0f64 / ((c * c)- (v_square ))).sqrt();
     let lorentz_transformation_matrix: [[f64; 4]; 4] =  [
-        [Lorentz_factor, -lorentz_factor_divided_by_c * vx , -lorentz_factor_divided_by_c * vy , -lorentz_factor_divided_by_c * vz ],
+        [lorentz_factor, -lorentz_factor_divided_by_c * vx , -lorentz_factor_divided_by_c * vy , -lorentz_factor_divided_by_c * vz ],
         [
             -lorentz_factor_divided_by_c * vx ,
-            1.0f64 + (Lorentz_factor - 1.0f64) * vx * vx / (v_square),
-            (Lorentz_factor - 1.0f64) * vx * vy / (v_square),
-            (Lorentz_factor - 1.0f64) * vx * vz / (v_square),
+            1.0f64 + (lorentz_factor - 1.0f64) * vx * vx / (v_square),
+            (lorentz_factor - 1.0f64) * vx * vy / (v_square),
+            (lorentz_factor - 1.0f64) * vx * vz / (v_square),
         ],
         [
             -lorentz_factor_divided_by_c * vy ,
-            (Lorentz_factor - 1.0f64) * vy * vx / (v_square),
-            1.0f64 + (Lorentz_factor - 1.0f64) * vy * vy / (v_square),
-            (Lorentz_factor - 1.0f64) * vy * vz / (v_square),
+            (lorentz_factor - 1.0f64) * vy * vx / (v_square),
+            1.0f64 + (lorentz_factor - 1.0f64) * vy * vy / (v_square),
+            (lorentz_factor - 1.0f64) * vy * vz / (v_square),
         ],
         [
             -lorentz_factor_divided_by_c * vz ,
-            (Lorentz_factor - 1.0f64) * vz * vx / (v_square),
-            (Lorentz_factor - 1.0f64) * vz * vy / (v_square),
-            1.0f64 + (Lorentz_factor - 1.0f64) * vz * vz / (v_square),
+            (lorentz_factor - 1.0f64) * vz * vx / (v_square),
+            (lorentz_factor - 1.0f64) * vz * vy / (v_square),
+            1.0f64 + (lorentz_factor - 1.0f64) * vz * vz / (v_square),
         ],
     ];
     let mut vertexes: Vec<f64> = Vec::new();
     
     let location_of_file: String = ini.5;
+    match fs::metadata(&location_of_file) {
+        Ok(_) => (),
+        Err(_) => println!(r#"File does not exist. Please check "special_realtivity_ray_tracer.ini. If the program is being run for the first time, it would have been created in the same directory as the executable.""#),
+    }
     dbg!(&location_of_file);
     let cornell_box = tobj::load_obj(
         format!("{}",location_of_file),
@@ -92,7 +96,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let (models, materials) = cornell_box.unwrap();
     //if not MTL exists or file does not open the default mtl and file
    // let materials = materials.expect("Failed to load MTL file");
-   let mut flag=true;
+  
    let materials = match materials{
        Result::Ok(te)=>{te},
        Result::Err(te)=>{flag=false;tobj::load_mtl("default.mtl").expect("default.mtl is missing . Make sure it is in same directory as special_relativity.exe  ").0},
