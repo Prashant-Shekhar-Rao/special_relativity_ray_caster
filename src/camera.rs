@@ -84,7 +84,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let location_of_file: String = ini.5;
     match fs::metadata(&location_of_file) {
         Ok(_) => (),
-        Err(_) => println!(r#"File does not exist. Please check "special_realtivity_ray_tracer.ini. If the program is being run for the first time, it would have been created in the same directory as the executable.""#),
+        Err(_) => println!(r#"File does not exist. Please check "special_realtivity_ray_tracer.ini" and the variable "file_location" in it. If the program is being run for the first time, it would have been created in the same directory as the executable.""#),
     }
     dbg!(&location_of_file);
     let cornell_box = tobj::load_obj(
@@ -96,7 +96,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let (models, materials) = cornell_box.unwrap();
     //if not MTL exists or file does not open the default mtl and file
    // let materials = materials.expect("Failed to load MTL file");
-  let mut flag=true;
+   let mut flag=true;
    let materials = match materials{
        Result::Ok(te)=>{te},
        Result::Err(te)=>{flag=false;tobj::load_mtl("default.mtl").expect("default.mtl is missing . Make sure it is in same directory as special_relativity.exe  ").0},
