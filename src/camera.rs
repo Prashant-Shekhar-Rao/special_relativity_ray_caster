@@ -96,7 +96,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let (models, materials) = cornell_box.unwrap();
     //if not MTL exists or file does not open the default mtl and file
    // let materials = materials.expect("Failed to load MTL file");
-  
+  let mut flag=true;
    let materials = match materials{
        Result::Ok(te)=>{te},
        Result::Err(te)=>{flag=false;tobj::load_mtl("default.mtl").expect("default.mtl is missing . Make sure it is in same directory as special_relativity.exe  ").0},
