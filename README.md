@@ -1,7 +1,7 @@
 # Special relativity ray caster
-Edit special_realtivity_ray_tracer.ini to add models. 
-To reset it to default, delete the file .
+
 ## Usage
+Edit special_realtivity_ray_tracer.ini to add models.To reset it to default, delete the file .
 Please use only low-polygon OBJ files in this program, as it does not implement bounding volume hierarchy. Consequently, the rendering time scales linearly with the number of polygons.
 
 This program does not need to be compiled to be used. The executable file is located in the examples folder and can be used directly. Additionally, the examples folder contains "default.mtl", "default.png" and "special_realtivity_ray_tracer.ini" which are necessary for the program to function properly.
