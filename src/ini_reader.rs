@@ -29,7 +29,7 @@ let filename="special_realtivity_ray_tracer.ini";
 let mut file=fs::read_to_string(filename);
 match file {
 Ok(_)=>(),
-Err(_)=> {fs::write(filename, data).expect("Unable to write file");file=fs::read_to_string(filename);print!(r#"The .ini file was missing, so a new file named 'special_relativity_ray_tracer.ini' has been created in the same location as the executable. Please edit the 'file_location' variable within this file to specify the location of the .obj file. Additionally, ensure that 'default.png' and 'default.mtl' are placed in the same directory as the executable if they are missing"#);},
+Err(_)=> {fs::write(filename, data).expect("Unable to write file");file=fs::read_to_string(filename);println!(r#"The .ini file was missing, so a new file named 'special_relativity_ray_tracer.ini' has been created in the same location as the executable. Please edit the 'file_location' variable within this file to specify the location of the .obj file. Additionally, ensure that 'default.png' and 'default.mtl' are placed in the same directory as the executable if they are missing."#);},
 
 }
 
