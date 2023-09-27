@@ -28,7 +28,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
      ini.6=scale(ini.6,div_by_light_year);
      ini.8=ini.8*div_by_light_year;
      ini.10=ini.10*div_by_light_year;
-     dbg!(&ini);
+    // dbg!(&ini);
     let origin=&Eye{t:ini.0*c,
         x:ini.1[0],
         y:ini.1[1],
