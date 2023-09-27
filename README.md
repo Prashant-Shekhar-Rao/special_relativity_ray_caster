@@ -1,17 +1,17 @@
 # Special relativity ray caster
 Edit special_realtivity_ray_tracer.ini to add models. 
 To reset it to default, delete the file .
-
+## Usage
 Please use only low-polygon OBJ files in this program, as it does not implement bounding volume hierarchy. Consequently, the rendering time scales linearly with the number of polygons.
 
-This program does not need to be compiled to be used. The executable file is located in the examples folder. Additionally, the examples folder contains "default.mtl" and "default.png," both of which are necessary for the program to function properly.
+This program does not need to be compiled to be used. The executable file is located in the examples folder and can be used directly. Additionally, the examples folder contains "default.mtl", "default.png" and "special_realtivity_ray_tracer.ini" which are necessary for the program to function properly.
 
 When compiling use the release option as debug build will be very slow.
-
+## Terrell rotation
 These are examples of terrell rotation 
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688982444.png)
 ![alt text](https://github.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/blob/master/examples/special_realtivity_output%20%201688987724.png)
-## Terrell rotation
+
 The original Terrell rotation paper (https://doi.org/10.1103%2FPhysRev.116.1041) assumes a small solid angle and rays striking the screen perpendicularly. The default ini file does not have a small solid angle because trying to find the position of the object such that it is visible on screen becomes tedious.
 This is a modified ini file which makes sure solid angle is small.
 
