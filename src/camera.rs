@@ -7,6 +7,9 @@ use vecmath::vec3_scale as scale;
 use vecmath::vec3_sub;
 use crate::ini_reader as red;
 use std::fs;
+use std::time::{Duration, Instant};
+use rayon::prelude::*;
+use std::sync::Mutex;
 #[derive(Debug)]
 pub struct Eye {
      pub t: f64,
@@ -160,9 +163,9 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     println!("dimensions {:?}", img.dimensions());
 
 
-    let mut output =
-        vec![vec![vec![255u8, 24u8, 157u8]; ini.3[1] as usize]; ini.3[0] as usize];
-    let mut distance_from_pixel: f64;
+    let mut output =Mutex::new(
+        vec![vec![vec![255u8, 24u8, 157u8]; ini.3[1] as usize]; ini.3[0] as usize]);
+    
     let f=ini.10;
     let direction_of_camera=V::vec3_normalized(ini.9);
     let mut perpendicular:[f64;3];
@@ -178,16 +181,22 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
     let mut y: f64;
     let h = height as f64;
     let w = width as f64;
-    let mut point_on_screen;
-    for i in 0..ini.3[0] as usize {
+  
+    let now = Instant::now();
+    let mut rayon_needs_a_vec_for_par_iter=Vec::with_capacity(ini.3[0] as usize+1);
+    for x in 0..ini.3[0] as usize{
+        rayon_needs_a_vec_for_par_iter.push(x)
+    }
+    //range has to be converted into a vector so rayon works with this
+    rayon_needs_a_vec_for_par_iter.par_iter().for_each (|i|{
         for j in 0..ini.3[1] as usize {
-            point_on_screen=V::vec3_add(V::vec3_add(scale(perpendicular,(u_bounds.1 - u_bounds.0)*i as f64 / ini.3[0] as f64+ u_bounds.0),scale(other_perpendicular,(v_bounds.1 - v_bounds.0)*j as f64 / ini.3[1] as f64+ v_bounds.0)),[point_of_focus[0],point_of_focus[1],point_of_focus[2]]);
+            let mut point_on_screen=V::vec3_add(V::vec3_add(scale(perpendicular,(u_bounds.1 - u_bounds.0)*(*i) as f64 / ini.3[0] as f64+ u_bounds.0),scale(other_perpendicular,(v_bounds.1 - v_bounds.0)*j as f64 / ini.3[1] as f64+ v_bounds.0)),[point_of_focus[0],point_of_focus[1],point_of_focus[2]]);
           
-            distance_from_pixel = (((point_on_screen[0] - origin.x) * (point_on_screen[0] - origin.x)
+            let mut distance_from_pixel = (((point_on_screen[0] - origin.x) * (point_on_screen[0] - origin.x)
                 + (point_on_screen[1] - origin.y) * (point_on_screen[1] - origin.y)
                 + (point_on_screen[2] - origin.z) * (point_on_screen[2] - origin.z)) as f64)
                 .sqrt();
-            output[i][j] = render(
+            output.lock().unwrap()[(*i)][j] = render(
                 Ray { direction_t: (-1.0f64 *distance_from_pixel)*c,
                     direction_x: (point_on_screen[0] - origin.x),
                     direction_y: (point_on_screen[1] - origin.y) ,
@@ -204,8 +213,10 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
                 &lorentz_transformation_matrix
             )
         }
-    }
-    return output;
+    });
+    println!("{}", now.elapsed().as_millis());
+    
+    return output.into_inner().unwrap()
 } 
 #[derive(Debug)]
 struct Ray {direction_t: f64,
