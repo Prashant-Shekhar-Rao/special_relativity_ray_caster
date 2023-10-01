@@ -89,7 +89,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
         Ok(_) => (),
         Err(_) => println!(r#"File does not exist. Please check "special_realtivity_ray_tracer.ini" and the variable "file_location" in it. If the program is being run for the first time, it would have been created in the same directory as the executable.""#),
     }
-    dbg!(&location_of_file);
+    println!("This is the location of the object file being loaded   {}",&location_of_file);
     let cornell_box = tobj::load_obj(
         format!("{}",location_of_file),
         &tobj::GPU_LOAD_OPTIONS,
