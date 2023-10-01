@@ -214,7 +214,7 @@ pub fn camera() -> Vec<Vec<Vec<u8>>> {
             )
         }
     });
-    println!("{}", now.elapsed().as_millis());
+    println!("{} milliseconds", now.elapsed().as_millis());
     
     return output.into_inner().unwrap()
 } 
