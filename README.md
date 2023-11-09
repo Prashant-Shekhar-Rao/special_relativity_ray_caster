@@ -10,9 +10,9 @@ When compiling use the release option as debug build will be very slow.
 ## Terrell rotation
 These are examples of terrell rotation 
 
-[Imgur](https://i.imgur.com/LpgxCVg.png)
+<img src="/images/1.jpg">
 
-[Imgur](https://imgur.com/HcjQtDe)
+<img src="/images/2.jpg">
 
 The original Terrell rotation paper (https://doi.org/10.1103%2FPhysRev.116.1041) assumes a small solid angle and rays striking the screen perpendicularly. The default ini file does not have a small solid angle because trying to find the position of the object such that it is visible on screen becomes tedious.
 This is a modified ini file which makes sure solid angle is small.
@@ -43,10 +43,10 @@ speed of light=1
 
 **In this case sphere's outline appears spherical despite moving at 40% speed of light**
 
-[Imgur](https://imgur.com/ugjUzgj)
+<img src="/images/3.jpg">
 This is a non moving sphere for comparison
 
-[Imgur](https://i.imgur.com/jEbZEVC.png)
+<img src="/images/4.jpg">
 In the default case, where a large solid angle is considered, a sphere moving at 40% of the speed of light would appear as an ellipsoid, as illustrated here.
 
-[Imgur](https://i.imgur.com/5uIPI6w.png)
+<img src="/images/5.jpg">
