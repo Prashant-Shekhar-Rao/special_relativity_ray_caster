@@ -8,7 +8,7 @@ This program does not need to be compiled to be used. The executable file is loc
 
 When compiling use the release option as debug build will be very slow.
 ## Terrell rotation
-These are examples of terrell rotation <img src="/examples/special_realtivity_output%20%201688982444.png"">
+These are examples of terrell rotation <img src="/examples/special_realtivity_output%20%201688982444.png">
 <img src="/examples/special_realtivity_output%20%201688987724.png">
 
 The original Terrell rotation paper (https://doi.org/10.1103%2FPhysRev.116.1041) assumes a small solid angle and rays striking the screen perpendicularly. The default ini file does not have a small solid angle because trying to find the position of the object such that it is visible on screen becomes tedious.
