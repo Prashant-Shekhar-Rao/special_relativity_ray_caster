@@ -10,7 +10,7 @@ When compiling use the release option as debug build will be very slow.
 ## Terrell rotation
 These are examples of terrell rotation 
 
-<img src="/images/1.jpg">
+<img src="https://raw.githubusercontent.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/master/images/1.jpg">
 
 <img src="/images/2.jpg">
 
