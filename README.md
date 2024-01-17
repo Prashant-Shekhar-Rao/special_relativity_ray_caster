@@ -8,7 +8,7 @@ This program does not need to be compiled to be used. The executable file is loc
 
 When compiling use the release option as debug build will be very slow.
 ## Terrell rotation
-These are examples of terrell rotation (Images given below may take a long time to load or may not load at all on a very slow mobile data connections. Use LAN or a good WIFI network to view them.)
+These are examples of terrell rotation (Images given below may take a long time to load or may not load at all on very slow mobile data connections. Use LAN or a good WIFI network to view them.)
 
 <img src="https://raw.githubusercontent.com/Prashant-Shekhar-Rao/special_relativity_ray_caster/master/images/1.jpg">
 
