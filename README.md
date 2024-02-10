@@ -6,7 +6,7 @@ Please use only low-polygon OBJ files in this program, as it does not implement 
 
 This program does not need to be compiled to be used. The executable file is located in the examples folder and can be used directly. Additionally, the examples folder contains "default.mtl", "default.png" and "special_realtivity_ray_tracer.ini" which are necessary for the program to function properly.
 
-When compiling use the release option as debug build will be very slow.
+When compiling use the ``cargo build --release`` option as debug build will be very slow.
 ## Terrell rotation
 These are examples of terrell rotation (Images given below may take a long time to load or may not load at all on very slow mobile data connections. Use LAN or a good WIFI network to view them.)
 
